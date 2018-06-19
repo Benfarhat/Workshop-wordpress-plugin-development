@@ -34,4 +34,3 @@ $wpdb->query( "DELETE FROM ".$wpdb->prefix."term_relationships WHERE object_id N
 $wpdb->query( "DELETE FROM ".$wpdb->prefix."postmeta WHERE post_id IN (SELECT id FROM ".$wpdb->prefix."posts WHERE post_type = 'book')" );
 $wpdb->query( "DELETE FROM ".$wpdb->prefix."term_relationships WHERE object_id IN (SELECT id FROM ".$wpdb->prefix."posts WHERE post_type = 'book')" );
 $wpdb->query( "DELETE FROM ".$wpdb->prefix."posts WHERE post_type = 'book'" );
-
