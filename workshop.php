@@ -38,6 +38,22 @@ class WorkshopWPD
         add_action( 'init', array( $this, 'custom_post_type' ) );
     } 
 
+    function register(){
+        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+    }
+
+    /*
+    function register_admin_scripts(){
+        // Admin
+        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+    }
+
+    function register_scripts(){
+        // Front
+        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
+    }
+    */
+
     function activate(){
         // generated a CPT
         $this->custom_post_type();
@@ -59,10 +75,17 @@ class WorkshopWPD
         register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
     }
 
+    function enqueue(){
+        // enqueue all our scripts
+        wp_enqueue_style( 'wwpdstyle', plugins_url( '/assets/css/style.css', __FILE__ ) );
+        wp_enqueue_script( 'wwpdscript', plugins_url( '/assets/js/script.js', __FILE__ ) );
+
+    }
 }
 
 if ( class_exists( 'WorkshopWPD') ) {
     $wwpd = new WorkshopWPD();
+    $wwpd->register();
 }
 
 // activation
