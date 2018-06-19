@@ -41,19 +41,21 @@ class WorkshopWPD
     function activate(){
         // generated a CPT
         // flush rewrite rules
+        flush_rewrite_rules();
     }
 
     function deactivate(){
         // flush rewrite rules
+        flush_rewrite_rules();
     }
 
-    function uninstall(){
+    static function uninstall(){ // We'll use uninstall.php
         // delete CPT
         // delete all the plugin data from the DB
     }
 
 function custom_post_type(){
-    register_post_type( 'book', ['public' => true] );
+    register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
 }
 
 }
@@ -70,5 +72,7 @@ register_activation_hook( __FILE__, array( $wwpd, 'activation' ) );
 
 register_deactivation_hook( __FILE__, array( $wwpd, 'deactivation' ) );
 
-// uninstall
-
+// uninstall > We will use uninstall.php
+/*
+register_uninstall_hook( __FILE__, array( $wwpd, 'uninstall' ) );
+*/
