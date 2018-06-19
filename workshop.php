@@ -35,22 +35,35 @@ defined( 'ABSPATH' ) || exit();
 class WorkshopWPD
 {
     function __construct(){
-        
+
     } 
 
     function activate(){
-
+        // generated a CPT
+        // flush rewrite rules
     }
 
     function deactivate(){
-
+        // flush rewrite rules
     }
 
     function uninstall(){
-
+        // delete CPT
+        // delete all the plugin data from the DB
     }
 }
 
 if ( class_exists( 'WorkshopWPD') ) {
     $wwpd = new WorkshopWPD();
 }
+
+// activation
+
+register_activation_hook( __FILE__, array( $wwpd, 'activation' ) );
+
+// deactivation
+
+register_deactivation_hook( __FILE__, array( $wwpd, 'deactivation' ) );
+
+// uninstall
+
