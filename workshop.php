@@ -35,7 +35,7 @@ defined( 'ABSPATH' ) || exit();
 class WorkshopWPD
 {
     function __construct(){
-
+        add_action( 'init', array( $this, 'custom_post_type' ) );
     } 
 
     function activate(){
@@ -51,6 +51,11 @@ class WorkshopWPD
         // delete CPT
         // delete all the plugin data from the DB
     }
+
+function custom_post_type(){
+    register_post_type( 'book', ['public' => true] );
+}
+
 }
 
 if ( class_exists( 'WorkshopWPD') ) {
