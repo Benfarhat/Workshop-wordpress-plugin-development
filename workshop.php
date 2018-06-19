@@ -40,6 +40,7 @@ class WorkshopWPD
 
     function activate(){
         // generated a CPT
+        $this->custom_post_type();
         // flush rewrite rules
         flush_rewrite_rules();
     }
@@ -54,9 +55,9 @@ class WorkshopWPD
         // delete all the plugin data from the DB
     }
 
-function custom_post_type(){
-    register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
-}
+    function custom_post_type(){
+        register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
+    }
 
 }
 
