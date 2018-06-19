@@ -24,5 +24,33 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
  
 You should have received a copy of the GNU General Public License
-along with WorkshopWPD. If not, see {URI to Plugin License}.
+along with WorkshopWPD. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
+
+ /**
+ * Prevent loading this file directly
+ */
+defined( 'ABSPATH' ) || exit();
+
+class WorkshopWPD
+{
+    function __construct(){
+        
+    } 
+
+    function activate(){
+
+    }
+
+    function deactivate(){
+
+    }
+
+    function uninstall(){
+
+    }
+}
+
+if ( class_exists( 'WorkshopWPD') ) {
+    $wwpd = new WorkshopWPD();
+}
