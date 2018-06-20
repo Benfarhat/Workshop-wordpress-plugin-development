@@ -42,11 +42,17 @@ class WorkshopWPD
     }
     */
 
-    static function register(){
+    function register(){
         //add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
         // If we use it in a static way, $this will not work,
         // We need to change enqueue function as static
-        add_action( 'admin_enqueue_scripts', array( 'WorkshopWPD', 'enqueue' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+
+        add_action( 'admin_menu', array( $this, 'add_admin_pages'  ) );
+    }
+
+    public function add_admin_pages() {
+        add_menu_page( 'WorkshopWPD', 'WorkshopWPD', 'manage_options', 'workshopwpd', array( $this, 'admin_index' ), 'dashicons-store', 110 );
     }
 
     protected function create_post_type() {
