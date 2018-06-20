@@ -1,0 +1,19 @@
+{
+    "name": "benfarhat/workshopwpd",
+    "description": "Workshop - Wordpress plugin development",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Benfarhat",
+            "email": "benfarhat.elyes@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "./inc"
+        }
+    }
+}
