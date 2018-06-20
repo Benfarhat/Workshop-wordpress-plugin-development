@@ -34,12 +34,17 @@ defined( 'ABSPATH' ) || exit();
 
 class WorkshopWPD
 {
-    function __construct(){
+    /*
+    private function __construct(){
         add_action( 'init', array( $this, 'custom_post_type' ) );
     } 
+    */
 
-    function register(){
+    static function register(){
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+        // If we use it in a static way, $this will not work,
+        // We need to change enqueue function as static
+        // add_action( 'admin_enqueue_scripts', array( 'WorkshopWPD', 'enqueue' ) );
     }
 
     /*
@@ -54,14 +59,14 @@ class WorkshopWPD
     }
     */
 
-    function activate(){
+    protected function activate(){
         // generated a CPT
         $this->custom_post_type();
         // flush rewrite rules
         flush_rewrite_rules();
     }
 
-    function deactivate(){
+    protected function deactivate(){
         // flush rewrite rules
         flush_rewrite_rules();
     }
@@ -71,11 +76,11 @@ class WorkshopWPD
         // delete all the plugin data from the DB
     }
 
-    function custom_post_type(){
+    protected function custom_post_type(){
         register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
     }
 
-    function enqueue(){
+    protected function enqueue(){
         // enqueue all our scripts
         wp_enqueue_style( 'wwpdstyle', plugins_url( '/assets/css/style.css', __FILE__ ) );
         wp_enqueue_script( 'wwpdscript', plugins_url( '/assets/js/script.js', __FILE__ ) );
