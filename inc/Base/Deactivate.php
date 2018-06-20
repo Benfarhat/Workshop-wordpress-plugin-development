@@ -3,7 +3,7 @@
  * @package WorkshopWPD
  */
 
-namespace Inc; 
+namespace Inc\Base; 
 
  class Deactivate
  {
