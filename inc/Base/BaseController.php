@@ -15,8 +15,10 @@
          // only for PHP 7
          // $this->plugin_path = plugin_dir_path( dirname( __FILE__, 2 ) );
          // Otherwise
-         $this->plugin_path = plugin_dir_path( dirname( __FILE__ ) . '../../' )  ;
-         $this->plugin_url = plugin_dir_url( dirname( __FILE__ ) . '../../' ) ;
-         $this->plugin_name = plugin_basename( dirname( __FILE__ ) . '../../../' . 'workshop.php' ) ;
+         $this->plugin_path = plugin_dir_path( dirname( dirname( __FILE__ ) ) )  ;
+         $this->plugin_url = plugin_dir_url( dirname( __FILE__ ) ) ;
+         $this->plugin_name = plugin_basename( dirname( dirname( dirname( __FILE__ ) ) ) . 'workshop.php' ) ;
+
+
      }
  }

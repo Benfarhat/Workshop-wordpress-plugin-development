@@ -11,7 +11,7 @@ class SettingsLinks extends BaseController
 {
 
 	public function register() {
-        add_filter( "plugin_action_links_$this->plugin_name", array( $this, 'settings_link' ) ) ; 
+        add_filter( "plugin_action_links_WorkshopWPD", array( $this, 'settings_link' ) ) ;
     }
 
     public function settings_link( $links ){
