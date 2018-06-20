@@ -55,6 +55,10 @@ class WorkshopWPD
         add_menu_page( 'WorkshopWPD', 'WorkshopWPD', 'manage_options', 'workshopwpd', array( $this, 'admin_index' ), 'dashicons-store', 110 );
     }
 
+    public function admin_index() {
+        require_once plugin_dir_path( __FILE__ ) . 'templates/admin.php';
+    }
+
     protected function create_post_type() {
         add_action( 'init', array( $this, 'custom_post_type' ) );
     }
