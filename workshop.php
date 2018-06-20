@@ -34,19 +34,24 @@ defined( 'ABSPATH' ) || exit();
 
 class WorkshopWPD
 {
+
     /*
-    private function __construct(){
+    public function __construct(){
         add_action( 'init', array( $this, 'custom_post_type' ) );
-    } 
+        //self::enqueue();
+    }
     */
 
     static function register(){
-        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+        //add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
         // If we use it in a static way, $this will not work,
         // We need to change enqueue function as static
-        // add_action( 'admin_enqueue_scripts', array( 'WorkshopWPD', 'enqueue' ) );
+        add_action( 'admin_enqueue_scripts', array( 'WorkshopWPD', 'enqueue' ) );
     }
 
+    protected function create_post_type() {
+        add_action( 'init', array( $this, 'custom_post_type' ) );
+    }
     /*
     function register_admin_scripts(){
         // Admin
@@ -59,47 +64,56 @@ class WorkshopWPD
     }
     */
 
-    protected function activate(){
+    /*
+
+    function activate(){
         // generated a CPT
         $this->custom_post_type();
         // flush rewrite rules
         flush_rewrite_rules();
     }
 
-    protected function deactivate(){
+    function deactivate(){
         // flush rewrite rules
         flush_rewrite_rules();
     }
 
-    static function uninstall(){ // We'll use uninstall.php
+    */
+    /*
+    function uninstall(){ // We'll use uninstall.php
         // delete CPT
         // delete all the plugin data from the DB
     }
+    */
 
-    protected function custom_post_type(){
+    function custom_post_type(){
         register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
     }
 
-    protected function enqueue(){
+    static function enqueue(){
         // enqueue all our scripts
         wp_enqueue_style( 'wwpdstyle', plugins_url( '/assets/css/style.css', __FILE__ ) );
         wp_enqueue_script( 'wwpdscript', plugins_url( '/assets/js/script.js', __FILE__ ) );
 
     }
+
+
 }
 
 if ( class_exists( 'WorkshopWPD') ) {
     $wwpd = new WorkshopWPD();
     $wwpd->register();
+    // WorkshopWPD::register();
+    
 }
 
 // activation
-
-register_activation_hook( __FILE__, array( $wwpd, 'activation' ) );
+require_once plugin_dir_path( __FILE__ ) . 'inc/workshop-activate.php';
+register_activation_hook( __FILE__, array( 'WorkshopWPDActivate', 'activate' ) );
 
 // deactivation
-
-register_deactivation_hook( __FILE__, array( $wwpd, 'deactivation' ) );
+require_once plugin_dir_path( __FILE__ ) . 'inc/workshop-deactivate.php';
+register_deactivation_hook( __FILE__, array( 'WorkshopWPDDeactivate', 'deactivate' ) );
 
 // uninstall > We will use uninstall.php
 /*
