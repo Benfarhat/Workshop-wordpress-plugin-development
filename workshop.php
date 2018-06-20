@@ -35,12 +35,11 @@ defined( 'ABSPATH' ) || exit();
 class WorkshopWPD
 {
 
-    /*
+    public $name;
+
     public function __construct(){
-        add_action( 'init', array( $this, 'custom_post_type' ) );
-        //self::enqueue();
+        $this->name = plugin_basename( __FILE__ );
     }
-    */
 
     function register(){
         //add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
@@ -49,6 +48,13 @@ class WorkshopWPD
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
         add_action( 'admin_menu', array( $this, 'add_admin_pages'  ) );
+
+        add_filter( "plugin_action_link_$this->name", array( $this, 'settings_link' ) ) ;
+    }
+
+    public function settings_link( $links ){
+        // add custom settings link
+
     }
 
     public function add_admin_pages() {
