@@ -49,13 +49,17 @@ class WorkshopWPD
 
         add_action( 'admin_menu', array( $this, 'add_admin_pages'  ) );
 
-        add_filter( "plugin_action_link_$this->name", array( $this, 'settings_link' ) ) ;
+        add_filter( "plugin_action_links_$this->name", array( $this, 'settings_link' ) ) ;
     }
 
     public function settings_link( $links ){
         // add custom settings link
+        $settings_link = '<a href="admin.php?page=workshopwpd">'.__( 'Settings', 'WorkshopWPD' ).'</a>';
+        array_push( $links, $settings_link );
+        return $links;
+        
 
-    }
+    } 
 
     public function add_admin_pages() {
         add_menu_page( 'WorkshopWPD', 'WorkshopWPD', 'manage_options', 'workshopwpd', array( $this, 'admin_index' ), 'dashicons-store', 110 );
