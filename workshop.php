@@ -32,6 +32,10 @@ along with WorkshopWPD. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
  */
 defined( 'ABSPATH' ) || exit();
 
+if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
+    require dirname( __FILE__ ) . '/vendor/autoload.php';
+}
+
 class WorkshopWPD
 {
 
