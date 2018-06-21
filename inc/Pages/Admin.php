@@ -15,11 +15,11 @@ class Admin extends BaseController
 	}
 
 	public function add_admin_pages() {
-		add_menu_page( 'WorkshopWPD', 'WorkshopWPD', 'manage_options', 'workshopwpd', array( $this, 'admin_index' ), 'dashicons-store', 110 );
+		add_menu_page( 'WorkshopWPD', 'WorkshopWPD', 'manage_options', 'workshopwpd', array( $this, 'admin_index' ), 'dashicons-admin-site', 50 );
 	}
 
 	public function admin_index() {
-		require_once $this->plugin_path . '/../../templates/admin.php';
+		require_once $this->plugin_path . 'templates/admin.php';
 	}	
 		
 }
