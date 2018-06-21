@@ -16,10 +16,10 @@
          // $this->plugin_path = plugin_dir_path( dirname( __FILE__, 2 ) );
          // Otherwise
                
-         $this->plugin_path = plugin_dir_path( self::r_dirname( __FILE__, 2 ) )  ;
-         $this->plugin_url = plugin_dir_url( dirname( __FILE__ ) ) ;
-         $this->plugin_name = plugin_basename( dirname( dirname( dirname( __FILE__ ) ) ) . 'workshop.php' ) ;
-
+         $this->plugin_path = plugin_dir_path( self::r_dirname( __FILE__, 2 ) ) ;
+         $this->plugin_url = plugin_dir_url( self::r_dirname( __FILE__, 2 ) ) ;
+         $this->plugin_name = plugin_basename( self::r_dirname( __FILE__, 3 ) . '/workshop.php' ) ;
+    
 
      }
 
