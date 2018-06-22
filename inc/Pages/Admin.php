@@ -40,7 +40,7 @@ class Admin extends BaseController
 			),
 		);
 
-		$admin_pages = $this_pages[0];
+		$admin_pages = $this->pages[0];
 
         $this->subpages = array (
 			array( 
@@ -58,7 +58,7 @@ class Admin extends BaseController
 	public function register() {
 
 
-		$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', WorkshopWPD) )->addSubPages( $this->subpages )->register();
+		$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->addSubPages( $this->subpages )->register();
 		//add_action( 'admin_menu', array( $this, 'add_admin_pages'  ) );
 	}
 

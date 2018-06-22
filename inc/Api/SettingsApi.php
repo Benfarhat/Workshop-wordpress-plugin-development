@@ -23,12 +23,12 @@ class SettingsApi
 
     }
 
-    public function withSubPage( string $title = null ) {
+    public function withSubPage( $title = null ) {
         if ( empty( $this->admin_pages ) ) {
             return $this;
         }
 
-        $admin_pages = $this_pages[0];
+        $admin_pages = $this->pages[0];
 
         $subpage = array (
 			array( 
