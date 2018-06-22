@@ -16,6 +16,7 @@ class Admin extends BaseController
     public $subpages = array();
 
 	public function __construct(){
+
 		$this->settings = new SettingsApi;
 
 		$this->pages = array(
@@ -41,14 +42,14 @@ class Admin extends BaseController
 
 		$admin_pages = $this_pages[0];
 
-        $this->subpage = array (
+        $this->subpages = array (
 			array( 
-                'parent_slug' => $admin_page['menu_slug'], 
-				'page_title' => $admin_page['page_title'], 
-				'menu_title' => $admin_page['menu_title'], 
-				'capability' => $admin_page['capability'], 
-				'menu_slug' => $admin_page['menu_slug'], 
-				'callback' => function() { echo "<h1>ma page</h1>"; }
+                'parent_slug' => 'workshopwpd', 
+				'page_title' => 'Custom post types', 
+				'menu_title' => 'CPT', 
+				'capability' => 'manage_options', 
+				'menu_slug' => 'workshop_cpt', 
+				'callback' => function() {echo "<h1>CPT manager</h1>"; }
             )
 		);
 		
