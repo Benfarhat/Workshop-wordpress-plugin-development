@@ -28,16 +28,7 @@ class Admin extends BaseController
 				'callback' => function() {echo "<h1>ma page</h1>"; },
 				'icon_url' => 'dashicons-admin-site',
 				'position' => 50
-			),
-			array( 
-				'page_title' => 'WorkshopWPD2',
-				'menu_title' => 'WorkshopWPD2',
-				'capability' => 'manage_options',
-				'menu_slug' => 'workshopwpd2',
-				'callback' => function() {echo "<h1>ma page</h1>"; },
-				'icon_url' => 'dashicons-admin-site',
-				'position' => 50
-			),
+			)
 		);
 
 		$admin_pages = $this->pages[0];
@@ -50,15 +41,35 @@ class Admin extends BaseController
 				'capability' => 'manage_options', 
 				'menu_slug' => 'workshop_cpt', 
 				'callback' => function() {echo "<h1>CPT manager</h1>"; }
+            ),
+			array( 
+                'parent_slug' => 'workshopwpd', 
+				'page_title' => 'Custom taxonomies', 
+				'menu_title' => 'Taxonomies', 
+				'capability' => 'manage_options', 
+				'menu_slug' => 'workshop_taxonomies', 
+				'callback' => function() {echo "<h1>CPT manager</h1>"; }
+            ),
+			array( 
+                'parent_slug' => 'workshopwpd', 
+				'page_title' => 'Custom widgets', 
+				'menu_title' => 'Widgets', 
+				'capability' => 'manage_options', 
+				'menu_slug' => 'workshop_widget', 
+				'callback' => function() {echo "<h1>CPT manager</h1>"; }
             )
 		);
 		
 	}
 
 	public function register() {
-
-
+/*
+var_dump($this->pages);
+var_dump($this->subpages);
+die();
+*/
 		$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->addSubPages( $this->subpages )->register();
+		//$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->addSubPages( $this->subpages )->register();
 		//add_action( 'admin_menu', array( $this, 'add_admin_pages'  ) );
 	}
 

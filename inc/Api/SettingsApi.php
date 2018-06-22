@@ -28,16 +28,16 @@ class SettingsApi
             return $this;
         }
 
-        $admin_pages = $this->pages[0];
+        $admin_page = $this->admin_pages[0];
 
         $subpage = array (
 			array( 
                 'parent_slug' => $admin_page['menu_slug'], 
-				'page_title' => $admin_page['page_title'], 
-				'menu_title' => $admin_page['menu_title'], 
+				'page_title' => $title ? $title : $admin_page['page_title'],  
+				'menu_title' => $title ? $title : $admin_page['menu_title'], 
 				'capability' => $admin_page['capability'], 
 				'menu_slug' => $admin_page['menu_slug'], 
-				'callback' => function() { echo "<h1>ma page</h1>"; }
+				'callback' => $admin_page['callback']
             )
         );
         
