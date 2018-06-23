@@ -16,9 +16,23 @@ class Admin extends BaseController
     public $subpages = array();
 
 	public function __construct(){
+		parent::__construct();
 
+	}
+
+	public function register() {
+
+		
 		$this->settings = new SettingsApi;
+		$this->setPages();
+		$this->setSubpages();
 
+
+
+		$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->addSubPages( $this->subpages )->register();
+	}
+
+	public function setPages() {
 		$this->pages = array(
 			array( 
 				'page_title' => 'WorkshopWPD',
@@ -30,8 +44,11 @@ class Admin extends BaseController
 				'position' => 50
 			)
 		);
+	}
 
-		$admin_pages = $this->pages[0];
+	public function setSubpages() {
+
+		
 
         $this->subpages = array (
 			array( 
@@ -40,7 +57,7 @@ class Admin extends BaseController
 				'menu_title' => 'CPT', 
 				'capability' => 'manage_options', 
 				'menu_slug' => 'workshop_cpt', 
-				'callback' => function() {echo "<h1>CPT manager</h1>"; }
+				'callback' => function() { return require_once( "$this->plugin_path/templates/admin.php"); }
             ),
 			array( 
                 'parent_slug' => 'workshopwpd', 
@@ -60,27 +77,8 @@ class Admin extends BaseController
             )
 		);
 		
+
 	}
 
-	public function register() {
-/*
-var_dump($this->pages);
-var_dump($this->subpages);
-die();
-*/
-		$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->addSubPages( $this->subpages )->register();
-		//$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->addSubPages( $this->subpages )->register();
-		//add_action( 'admin_menu', array( $this, 'add_admin_pages'  ) );
-	}
 
-	/*
-	public function add_admin_pages() {
-		add_menu_page( 'WorkshopWPD', 'WorkshopWPD', 'manage_options', 'workshopwpd', array( $this, 'admin_index' ), 'dashicons-admin-site', 50 );
-	}
-
-	public function admin_index() {
-		require_once $this->plugin_path . 'templates/admin.php';
-	}	
-		
-	*/
 }
