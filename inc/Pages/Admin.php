@@ -36,7 +36,9 @@ class Admin extends BaseController
 
 		$this->setSubpages();
 
-
+		$this->setSettings();
+		$this->setfieldsSections();
+		$this->setSettings();
 
 		$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->addSubPages( $this->subpages )->register();
 	}
@@ -87,6 +89,52 @@ class Admin extends BaseController
 		);
 		
 
+	}
+
+	public function setSettings(){
+		$args = array(
+			array(
+				'option_group' => 'workshopwpd_options_group',
+				'option_name' => 'text_example',
+				'callback' => array($this->callbacks, 'workshopwpdOptionsGroup')
+			)
+
+		);
+
+		$this->settings->setSettings( $args );
+	}
+
+	public function setSections(){
+		$args = array(
+			array(
+				'id' => 'workshopwpd_admin_index',
+				'title' => 'Settings',
+				'callback' => array($this->callbacks, 'workshopwpdAdminSection'),
+				'page' => 'workshopwpd'
+			)
+
+		);
+
+		$this->settings->setSections( $args );
+	}
+
+	public function setFields(){
+		$args = array(
+			array(
+				'id' => 'workshopwpd_admin_index', // should be the option name of settings
+				'title' => 'Text example',
+				'callback' => array($this->callbacks, 'workshopwpdTextExample'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'text_example',
+					'class' => 'example-class'
+				)
+			)
+
+		);
+
+		$this->settings->setSections( $args );
 	}
 
 

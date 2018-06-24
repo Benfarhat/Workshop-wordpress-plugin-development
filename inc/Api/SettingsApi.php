@@ -18,9 +18,15 @@ class SettingsApi
     public $fields = array();
 
     public function register() {
+
         if ( ! empty( $this->admin_pages ) ) {
             add_action( 'admin_menu', array( $this, 'addAdminMenu' ) );
         }
+        
+        if ( ! empty( $this->settings ) ) {
+            add_action( 'admin_init', array( $this, 'registerCustomFields' ) );
+        }
+
     }
 
     public  function addPages( array $pages ) {
@@ -88,6 +94,31 @@ class SettingsApi
         }
 
     }
+
+    
+    public  function setSettings( array $settings ) {
+
+        $this->settings = $settings;
+        return $this;
+
+    }
+
+    
+    public  function setSections( array $sections ) {
+
+        $this->sections = $sections;
+        return $this;
+
+    }
+
+    
+    public  function setFields( array $fields ) {
+
+        $this->fields = $fields;
+        return $this;
+
+    }
+
 
     public function registerCustomFields() {
 
