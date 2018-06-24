@@ -66,7 +66,7 @@ class Admin extends BaseController
 				'menu_title' => 'CPT', 
 				'capability' => 'manage_options', 
 				'menu_slug' => 'workshop_cpt', 
-				'callback' => function() { echo "something is missing!"; }
+				'callback' => array( $this->callbacks, 'adminCpt')
             ),
 			array( 
                 'parent_slug' => 'workshopwpd', 
@@ -74,7 +74,7 @@ class Admin extends BaseController
 				'menu_title' => 'Taxonomies', 
 				'capability' => 'manage_options', 
 				'menu_slug' => 'workshop_taxonomies', 
-				'callback' => function() {echo "<h1>CPT manager</h1>"; }
+				'callback' => array( $this->callbacks, 'adminTaxonomy')
             ),
 			array( 
                 'parent_slug' => 'workshopwpd', 
@@ -82,7 +82,7 @@ class Admin extends BaseController
 				'menu_title' => 'Widgets', 
 				'capability' => 'manage_options', 
 				'menu_slug' => 'workshop_widget', 
-				'callback' => function() {echo "<h1>CPT manager</h1>"; }
+				'callback' => array( $this->callbacks, 'adminWidget')
             )
 		);
 		
