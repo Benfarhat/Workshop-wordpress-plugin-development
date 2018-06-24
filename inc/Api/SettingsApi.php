@@ -81,5 +81,15 @@ class SettingsApi
         }
 
     }
+
+    public function registerCustomFields() {
+        // register setting
+
+        // add settings section
+
+        // add settings field
+         
+    }
+
 		
 }
