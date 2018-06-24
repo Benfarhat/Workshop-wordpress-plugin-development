@@ -5,14 +5,19 @@
 
 namespace Inc\Pages;
 
-use \Inc\Base\BaseController;
-use \Inc\Api\SettingsApi;
+use Inc\Api\SettingsApi;
+use Inc\Base\BaseController;
+use Inc\Api\Callbacks\AdminCallbacks;
 
 class Admin extends BaseController
 {
 
 	public $settings;
-    public $pages = array();
+
+	public $callbacks;
+
+	public $pages = array();
+	
     public $subpages = array();
 
 	public function __construct(){
@@ -24,7 +29,11 @@ class Admin extends BaseController
 
 		
 		$this->settings = new SettingsApi;
+
+		$this->callbacks = new AdminCallbacks;
+
 		$this->setPages();
+
 		$this->setSubpages();
 
 
@@ -39,7 +48,7 @@ class Admin extends BaseController
 				'menu_title' => 'WorkshopWPD',
 				'capability' => 'manage_options',
 				'menu_slug' => 'workshopwpd',
-				'callback' => function() {echo "<h1>ma page</h1>"; },
+				'callback' => array( $this->callbacks, 'adminDashboard'),
 				'icon_url' => 'dashicons-admin-site',
 				'position' => 50
 			)
@@ -57,7 +66,7 @@ class Admin extends BaseController
 				'menu_title' => 'CPT', 
 				'capability' => 'manage_options', 
 				'menu_slug' => 'workshop_cpt', 
-				'callback' => function() { return require_once( "$this->plugin_path/templates/admin.php"); }
+				'callback' => function() { echo "something is missing!"; }
             ),
 			array( 
                 'parent_slug' => 'workshopwpd', 
