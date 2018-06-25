@@ -45,4 +45,10 @@ class AdminCallbacks extends BaseController
         $value = esc_attr( get_option( 'text_example' ) );
         echo '<input type="text" class="regular-text" name="text_example" value="' . $value . '" placeholder="Write something here!">';
     }
+
+    public function workshopwpdTextExample2()
+    {
+        $value = esc_attr( get_option( 'text_example2' ) );
+        echo '<input type="text" class="regular-text" name="text_example2" value="' . $value . '" placeholder="Write something else!">';
+    }
 }
