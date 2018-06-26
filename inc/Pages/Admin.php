@@ -154,7 +154,7 @@ class Admin extends BaseController
 			array(
 				'id' => 'workshopwpd_admin_index',
 				'title' => 'Settings',
-				'callback' => array($this->callbacks, 'workshopwpdAdminSection'),
+				'callback' => array($this->callbacks_mngr, 'adminSectionManager'),
 				'page' => 'workshopwpd'
 			)
 
