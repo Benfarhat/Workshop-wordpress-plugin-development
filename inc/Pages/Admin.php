@@ -8,6 +8,7 @@ namespace Inc\Pages;
 use Inc\Api\SettingsApi;
 use Inc\Base\BaseController;
 use Inc\Api\Callbacks\AdminCallbacks;
+use Inc\Api\Callbacks\ManagerCallbacks;
 
 class Admin extends BaseController
 {
@@ -100,47 +101,47 @@ class Admin extends BaseController
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'cpt_manager',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			),
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'taxonomy_manager',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			),
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'media_widget',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			),
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'gallery_manager',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			),
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'testimonial_manager',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			),
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'template_manager',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			),
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'login_manager',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			),
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'membership_manager',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			),
 			array(
 				'option_group' => 'workshopwpd_plugin_settings',
 				'option_name' => 'chat_manager',
-				'callback' => array($this->callbacks, 'checkboxSanitize')
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			)
 
 		);
