@@ -10,13 +10,13 @@
     <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
             <form action="options.php" method="post">
-            <?php 
-                settings_fields( 'workshopwpd_options_group' );
-                do_settings_sections( 'workshopwpd' );
-                submit_button( "Save" );
-            ?>
-            </form>
-        </div>
+                <?php 
+                    settings_fields( 'workshopwpd_options_group' );
+                    do_settings_sections( 'workshopwpd' );
+                    submit_button( "Save" );
+                ?>
+                </form>
+            </div>
         <div id="tab-2" class="tab-pane">
             <h3>Updates</h3>
         </div>
