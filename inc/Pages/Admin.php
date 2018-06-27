@@ -166,28 +166,114 @@ class Admin extends BaseController
 	public function setFields(){
 		$args = array(
 			array(
-				'id' => 'text_example', // should be the option name of settings
-				'title' => 'Text example',
-				'callback' => array($this->callbacks, 'workshopwpdTextExample'),
+				'id' => 'cpt_manager', // should be the option name of settings
+				'title' => 'Activate CPT Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
 				'page' => 'workshopwpd',
 				'section' => 'workshopwpd_admin_index',
 				'args' => array(
-					'label_for' => 'text_example',
-					'class' => 'example-class'
-					)
-				),
-			array(
-				'id' => 'text_example2', // should be the option name of settings
-				'title' => 'Text example 2',
-				'callback' => array($this->callbacks, 'workshopwpdTextExample2'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'text_example2',
-					'class' => 'example-class'
-					)
+					'label_for' => 'cpt_manager',
+					'class' => 'ui-toggle'
 
-				)
+					)
+			),
+			array(
+				'id' => 'taxonomy_manager', // should be the option name of settings
+				'title' => 'Activate Taxonomy Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'taxonomy_manager',
+					'class' => 'ui-toggle'
+
+					)
+			),
+			array(
+				'id' => 'media_widget', // should be the option name of settings
+				'title' => 'Activate Media Widget Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'media_widget',
+					'class' => 'ui-toggle'
+
+					)
+			),
+			array(
+				'id' => 'gallery_manager', // should be the option name of settings
+				'title' => 'Activate Gallery Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'gallery_manager',
+					'class' => 'ui-toggle'
+
+					)
+			),
+			array(
+				'id' => 'testimonial_manager', // should be the option name of settings
+				'title' => 'Activate Testimonial Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'testimonial_manager',
+					'class' => 'ui-toggle'
+
+					)
+			),
+			array(
+				'id' => 'template_manager', // should be the option name of settings
+				'title' => 'Activate Template Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'template_manager',
+					'class' => 'ui-toggle'
+
+					)
+			),
+			array(
+				'id' => 'login_manager', // should be the option name of settings
+				'title' => 'Activate Login Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'login_manager',
+					'class' => 'ui-toggle'
+
+					)
+			),
+			array(
+				'id' => 'membership_manager', // should be the option name of settings
+				'title' => 'Activate Membership Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'membership_manager',
+					'class' => 'ui-toggle'
+
+					)
+			),
+			array(
+				'id' => 'chat_manager', // should be the option name of settings
+				'title' => 'Activate Chat Manager',
+				'callback' => array($this->callbacks_mngr, 'checkboxField'),
+				'page' => 'workshopwpd',
+				'section' => 'workshopwpd_admin_index',
+				'args' => array(
+					'label_for' => 'chat_manager',
+					'class' => 'ui-toggle'
+
+					)
+			),
+			
 			);
 
 		$this->settings->setFields( $args );

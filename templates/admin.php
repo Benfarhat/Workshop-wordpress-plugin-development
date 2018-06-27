@@ -11,7 +11,7 @@
         <div id="tab-1" class="tab-pane active">
             <form action="options.php" method="post">
                 <?php 
-                    settings_fields( 'workshopwpd_options_group' );
+                    settings_fields( 'workshopwpd_plugin_settings' );
                     do_settings_sections( 'workshopwpd' );
                     submit_button( "Save" );
                 ?>
