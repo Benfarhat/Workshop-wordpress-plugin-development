@@ -28,13 +28,13 @@ var browserSync  = require( 'browser-sync' ).create();
 var reload       = browserSync.reload;
 
 // Project related variables
-var projectURL   = 'https://test.dev';
+var projectURL   = 'http://localhost/wordpress/wp-admin';
 
-var styleSRC     = './src/scss/mystyle.scss';
+var styleSRC     = './src/scss/style.scss';
 var styleURL     = './assets/css/';
 var mapURL       = './';
 
-var jsSRC        = './src/js/myscript.js';
+var jsSRC        = './src/js/script.js';
 var jsURL        = './assets/js/';
 
 var styleWatch   = './src/scss/**/*.scss';
@@ -70,7 +70,7 @@ gulp.task( 'js', function() {
 	})
 	.transform( babelify, { presets: [ 'env' ] } )
 	.bundle()
-	.pipe( source( 'myscript.js' ) )
+	.pipe( source( 'script.js' ) )
 	.pipe( buffer() )
 	.pipe( gulpif( options.has( 'production' ), stripDebug() ) )
 	.pipe( sourcemaps.init({ loadMaps: true }) )
@@ -87,7 +87,7 @@ function triggerPlumber( src, url ) {
 }
 
  gulp.task( 'default', ['styles', 'js'], function() {
-	gulp.src( jsURL + 'myscript.min.js' )
+	gulp.src( jsURL + 'script.min.js' )
 		.pipe( notify({ message: 'Assets Compiled!' }) );
  });
 
@@ -95,6 +95,6 @@ function triggerPlumber( src, url ) {
 	gulp.watch( phpWatch, reload );
 	gulp.watch( styleWatch, [ 'styles' ] );
 	gulp.watch( jsWatch, [ 'js', reload ] );
-	gulp.src( jsURL + 'myscript.min.js' )
+	gulp.src( jsURL + 'script.min.js' )
 		.pipe( notify({ message: 'Gulp is Watching, Happy Coding!' }) );
  });
