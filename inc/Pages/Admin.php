@@ -97,54 +97,15 @@ class Admin extends BaseController
 	}
 
 	public function setSettings(){
-		$args = array(
-			array(
+		$args = array();
+		foreach($this->managers as $k => $v) {
+			$args[] = array(
 				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'cpt_manager',
+				'option_name' => $k,
 				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			),
-			array(
-				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'taxonomy_manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			),
-			array(
-				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'media_widget',
-				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			),
-			array(
-				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'gallery_manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			),
-			array(
-				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'testimonial_manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			),
-			array(
-				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'template_manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			),
-			array(
-				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'login_manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			),
-			array(
-				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'membership_manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			),
-			array(
-				'option_group' => 'workshopwpd_plugin_settings',
-				'option_name' => 'chat_manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
-			)
+			);
+		}
 
-		);
 
 		$this->settings->setSettings( $args );
 	}
@@ -164,117 +125,22 @@ class Admin extends BaseController
 	}
 
 	public function setFields(){
-		$args = array(
-			array(
-				'id' => 'cpt_manager', // should be the option name of settings
-				'title' => 'Activate CPT Manager',
+		$args = array();
+		foreach($this->managers as $k => $v) {
+			$args[] = array(
+				'id' => $k,
+				'title' => $v,
 				'callback' => array($this->callbacks_mngr, 'checkboxField'),
 				'page' => 'workshopwpd',
 				'section' => 'workshopwpd_admin_index',
 				'args' => array(
-					'label_for' => 'cpt_manager',
+					'label_for' => $k,
 					'class' => 'ui-toggle'
 
 					)
-			),
-			array(
-				'id' => 'taxonomy_manager', // should be the option name of settings
-				'title' => 'Activate Taxonomy Manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxField'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'taxonomy_manager',
-					'class' => 'ui-toggle'
-
-					)
-			),
-			array(
-				'id' => 'media_widget', // should be the option name of settings
-				'title' => 'Activate Media Widget Manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxField'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'media_widget',
-					'class' => 'ui-toggle'
-
-					)
-			),
-			array(
-				'id' => 'gallery_manager', // should be the option name of settings
-				'title' => 'Activate Gallery Manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxField'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'gallery_manager',
-					'class' => 'ui-toggle'
-
-					)
-			),
-			array(
-				'id' => 'testimonial_manager', // should be the option name of settings
-				'title' => 'Activate Testimonial Manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxField'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'testimonial_manager',
-					'class' => 'ui-toggle'
-
-					)
-			),
-			array(
-				'id' => 'template_manager', // should be the option name of settings
-				'title' => 'Activate Template Manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxField'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'template_manager',
-					'class' => 'ui-toggle'
-
-					)
-			),
-			array(
-				'id' => 'login_manager', // should be the option name of settings
-				'title' => 'Activate Login Manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxField'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'login_manager',
-					'class' => 'ui-toggle'
-
-					)
-			),
-			array(
-				'id' => 'membership_manager', // should be the option name of settings
-				'title' => 'Activate Membership Manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxField'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'membership_manager',
-					'class' => 'ui-toggle'
-
-					)
-			),
-			array(
-				'id' => 'chat_manager', // should be the option name of settings
-				'title' => 'Activate Chat Manager',
-				'callback' => array($this->callbacks_mngr, 'checkboxField'),
-				'page' => 'workshopwpd',
-				'section' => 'workshopwpd_admin_index',
-				'args' => array(
-					'label_for' => 'chat_manager',
-					'class' => 'ui-toggle'
-
-					)
-			),
-			
-			);
+				);			
+		}
+	
 
 		$this->settings->setFields( $args );
 	}
