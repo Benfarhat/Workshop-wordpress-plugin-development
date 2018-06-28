@@ -97,7 +97,15 @@ class Admin extends BaseController
 	}
 
 	public function setSettings(){
-		$args = array();
+		$args = array(
+			array(
+				'option_group' => 'workshopwpd_plugin_settings',
+				'option_name' => 'workshopwpd',
+				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
+			)
+		);
+
+		/*
 		foreach($this->managers as $k => $v) {
 			$args[] = array(
 				'option_group' => 'workshopwpd_plugin_settings',
@@ -105,7 +113,7 @@ class Admin extends BaseController
 				'callback' => array($this->callbacks_mngr, 'checkboxSanitize')
 			);
 		}
-
+		*/
 
 		$this->settings->setSettings( $args );
 	}
@@ -135,8 +143,8 @@ class Admin extends BaseController
 				'section' => 'workshopwpd_admin_index',
 				'args' => array(
 					'label_for' => $k,
-					'class' => 'ui-toggle'
-
+					'class' => 'ui-toggle',
+					'option_name' => 'workshopwpd'
 					)
 				);			
 		}
