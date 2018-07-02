@@ -17,12 +17,17 @@ class CustomPostTypeController extends BaseController
 
 	public function register() {
  
-        var_dump( $this->managers );
          
         $option = get_option( 'workshopwpd' );
         
-        $activated = isset( $option[$name] ) ? ($checkbox[$name] ? " checked" : "" ) : false;
+        $activated = isset( $option['cpt_manager'] ) ? $option['cpt_manager'] : false;
 
+
+        var_dump( $activated );
+
+        if( ! $activated ) {
+            return;
+        }
 
         $this->settings = new SettingsApi;
 
