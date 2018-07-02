@@ -21,7 +21,7 @@ class Dashboard extends BaseController
 
 	public $pages = array();
 	
-    public $subpages = array();
+    // public $subpages = array();
 
 	public function __construct(){
 		parent::__construct();
@@ -39,13 +39,13 @@ class Dashboard extends BaseController
 
 		$this->setPages();
 
-		$this->setSubpages();
+		// $this->setSubpages();
 
 		$this->setSettings();
 		$this->setSections();
 		$this->setFields();
 
-		$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->addSubPages( $this->subpages )->register();
+		$this->settings->addPages( $this->pages )->withSubPage( __('Dashboard', 'WorkshopWPD') )->register();
 	}
 
 	public function setPages() {
@@ -61,7 +61,7 @@ class Dashboard extends BaseController
 			)
 		);
 	}
-
+/*
 	public function setSubpages() {
 
 		
@@ -95,7 +95,7 @@ class Dashboard extends BaseController
 		
 
 	}
-
+*/
 	public function setSettings(){
 		$args = array(
 			array(
