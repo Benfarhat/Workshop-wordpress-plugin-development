@@ -39,6 +39,13 @@
 
      }
 
+     public function activated( $key )
+     {
+         $option = get_option( 'alecaddd_plugin' );
+ 
+         return isset( $option[ $key ] ) ? $option[ $key ] : false;
+     }
+
      protected static function r_dirname($path, $count=1){
         if ($count > 1){
            return dirname(self::r_dirname($path, --$count));
