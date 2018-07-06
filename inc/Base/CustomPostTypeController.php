@@ -23,7 +23,7 @@ class CustomPostTypeController extends BaseController
         $activated = isset( $option['cpt_manager'] ) ? $option['cpt_manager'] : false;
 
 
-        var_dump( $activated );
+   
 
         if( ! $activated ) {
             return;

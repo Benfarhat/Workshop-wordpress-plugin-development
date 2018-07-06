@@ -41,7 +41,7 @@
 
      public function activated( $key )
      {
-         $option = get_option( 'alecaddd_plugin' );
+         $option = get_option( 'workshopwpd' );
  
          return isset( $option[ $key ] ) ? $option[ $key ] : false;
      }
